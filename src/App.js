@@ -4,6 +4,8 @@ import HomePage from './pages/homepage/homepage-component';
 import './pages/homepage/homepage-style.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShopPage from './pages/shoppage/shop-component';
+import Header from './components/header/header-component';
+
 
 // const HatsPage = (props) => {
 //   console.log(props);
@@ -18,11 +20,9 @@ import ShopPage from './pages/shoppage/shop-component';
 //add something
 
 function App(props) {
-  console.log(props);
-
   return (
     <div className="App">
-      {/* <div><HomePage/></div> */}
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
