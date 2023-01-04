@@ -3,27 +3,30 @@ import './App.css';
 import HomePage from './pages/homepage/homepage-component';
 import './pages/homepage/homepage-style.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ShopPage from './pages/shoppage/shop-component';
 
-
-const HatsPage = () => {
-  return (
-    <div>HatsPage</div>
-  )
-}
+// const HatsPage = (props) => {
+//   console.log(props);
+//   return (
+//     <div>HatsPage</div>
+//   )
+// }
 
 
 
 
 //add something
 
-function App() {
+function App(props) {
+  console.log(props);
+
   return (
     <div className="App">
       {/* <div><HomePage/></div> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/hats" element={<HatsPage />} />
+          <Route path="/shop" element={<ShopPage />} />
         </Routes>
       </BrowserRouter>
     </div>
