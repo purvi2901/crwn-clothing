@@ -1,32 +1,22 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import HomePage from './pages/homepage/homepage-component';
 import './pages/homepage/homepage-style.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShopPage from './pages/shoppage/shop-component';
 import Header from './components/header/header-component';
-
-
-// const HatsPage = (props) => {
-//   console.log(props);
-//   return (
-//     <div>HatsPage</div>
-//   )
-// }
-
-
-
-
-//add something
+import SigninAndsignup from './pages/signinsignup/signinsignup-component';
 
 function App(props) {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
+            <Route exact path="/" element={<Header />} >
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/signin" element={<SigninAndsignup />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
