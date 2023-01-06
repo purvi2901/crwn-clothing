@@ -23,6 +23,8 @@ const CollectionPreview = (props) => {
 export default CollectionPreview
 
 
+
+
 // {
 //     props.items
 //     .filter((item,idx)=>idx<4)

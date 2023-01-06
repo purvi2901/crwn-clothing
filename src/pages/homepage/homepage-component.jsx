@@ -1,14 +1,46 @@
-import React, { Fragment } from 'react';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../components/Auth";
 import Directory from '../../components/directory/directory-component';
-import Menuitem from '../../components/menuitems/menuitem-component';
-import Header from '../../components/header/header-component';
 
-const HomePage = () => {
+
+const Home = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
-      <div className='homepage'>
-         <Directory/>
-      </div>
-  )
-}
+    <div className='homepage'>
+      {currentUser ? (
+        <p>
+          You are logged - <Link to="/dashboard">View Dashboard</Link>
+        </p>
+      ) : (
+        <p>
+          <Link to="/login">Log In</Link> or <Link to="/signup">Sign Up</Link>
+        </p>
+      )}
+      <Directory />
 
-export default HomePage
+     </div>
+
+  );
+};
+
+export default Home;
+
+
+
+
+
+// import React, { Fragment } from 'react';
+// import Directory from '../../components/directory/directory-component';
+// import Menuitem from '../../components/menuitems/menuitem-component';
+// import Header from '../../components/header/header-component';
+
+// const HomePage = () => {
+//   return (
+//       <div className='homepage'>
+//          <Directory/>
+//       </div>
+//   )
+// }
+
+// export default HomePage
