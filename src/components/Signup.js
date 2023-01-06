@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ReactDOM } from "react";
 import { Navigate } from "react-router-dom";
@@ -10,17 +11,6 @@ import "./Auth-style.scss";
 
 const SignUp = () => {
     const [currentUser, setCurrentUser] = useState(null);
-
-    // const [setemail, setUsername] = useState(null);
-    // const [password, setPassword] = useState(null);
-    // handleChange = (event) => {
-    //     event => setPassword(event.target.value)}
-    // };
-    // onChangeHandler = (event) => {
-    //     event => setUsername(event.target.value)
-    // };
-
-
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +44,8 @@ export default SignUp;
 
 
 
+
+// /only for email pass firebase
 
 
 

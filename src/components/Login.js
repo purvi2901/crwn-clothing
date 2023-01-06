@@ -33,3 +33,8 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
+// /only for email pass firebase
+
+
+

@@ -14,10 +14,30 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 console.log(auth);
-// export const provider = new firebase.auth.GoogleAuthProvider(); 
-// console.log(provider);
-
 export const database = firebase.database();
+
+
+
+
+
+// export const provider = new firebase.auth.GoogleAuthProvider(); 
+const provider = new firebase.auth.GoogleAuthProvider();
+// console.log(provider);
+provider.setCustomParameters({ prompt: 'select_account' });
+// console.log(auth.signInWithPopup(provider).catch(alert))
+export const signInWithGoogle = () =>auth.signInWithPopup(provider);
+// export const signInWithRedirect = () => auth.signInWithRedirect(provider);
+
+// export const signInWithGoogle = () => {
+//     auth.signInWithPopup(provider).then((res) => {
+//       console.log(res.user)
+//     }).catch((error) => {
+//       console.log(error.message)
+//     })
+//   }
+//   export default firebase;
+
+
 
 
 

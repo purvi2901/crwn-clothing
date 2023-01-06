@@ -21,3 +21,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+// /only for email pass firebase
