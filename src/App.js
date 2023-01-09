@@ -1,64 +1,98 @@
+import { Container, Row, Col } from "react-bootstrap";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/Googleauth/Home";
+import Login from "./components/Googleauth/Home";
+import Signup from "./components/Googleauth/Home";
+import ProtectedRoute from "./components/Googleauth/Home";
+import { UserAuthContextProvider } from "./Context/UserAuthContext";
 
+function App() {
+  return (
+    <Container style={{ width: "400px" }}>
+      <Row>
+        <Col>
+          <UserAuthContextProvider>
+            <Routes>
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+        </UserAuthContextProvider>
+      </Col>
+    </Row>
+    </Container >
+  );
+}
+
+export default App;
 
 
 
 
 
 // import logo from './logo.svg';
-import React from 'react';
-import './App.css';
-import HomePage from './pages/homepage/homepage-component';
-import './pages/homepage/homepage-style.scss';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ShopPage from './pages/shoppage/shop-component';
-import Header from './components/header/header-component';
-// import SignIn from "./components/signin/signin-component";
-import SigninAndsignup from './pages/signinsignup/signinsignup-component';
-import { auth } from './firebase/firebase.util';
+// import React from 'react';
+// import './App.css';
+// import HomePage from './pages/homepage/homepage-component';
+// import './pages/homepage/homepage-style.scss';
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import ShopPage from './pages/shoppage/shop-component';
+// import Header from './components/header/header-component';
+// // import SignIn from "./components/signin/signin-component";
+// import SigninAndsignup from './pages/signinsignup/signinsignup-component';
+// import { auth,createUserProfileDocument } from './firebase/firebase.util';
 
 
-// function App()
-class App extends React.Component {
-  constructor() {
-    super();
+// // function App()
+// class App extends React.Component {
+//   constructor() {
+//     super();
 
-    this.state = {
-      currentUser: null
-    };
-  }
-  
-  unsubscribeFromAuth = null;
+//     this.state = {
+//       currentUser: null
+//     };
+//   }
 
-  componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
+//   unsubscribeFromAuth = null;
 
-      console.log(user);
-    });
-  }
+//   componentDidMount() {
+//     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+//       // this.setState({ currentUser: user });
+//       createUserProfileDocument(user);
+//       console.log(user);
+//     });
+//   }
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+//   componentWillUnmount() {
+//     this.unsubscribeFromAuth();
+//   }
 
-  render() {
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<Header currentUser={this.state.currentUser} />} >
-              <Route exact path="/" element={<HomePage />} />
-              <Route path="/shop" element={<ShopPage />} />
-              <Route path="/signin" element={<SigninAndsignup />} />
-              {/* <Route exact path="/login" element={<SigninAndsignup />} /> */}
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    );
-  }
-}
-export default App;
+//   render() {
+//     return (
+//       <div className="App">
+//         <BrowserRouter>
+//           <Routes>
+//             <Route exact path="/" element={<Header currentUser={this.state.currentUser} />} >
+//               <Route exact path="/" element={<HomePage />} />
+//               <Route path="/shop" element={<ShopPage />} />
+//               <Route path="/signin" element={<SigninAndsignup />} />
+//               {/* <Route exact path="/login" element={<SigninAndsignup />} /> */}
+//             </Route>
+//           </Routes>
+//         </BrowserRouter>
+//       </div>
+//     );
+//   }
+// }
+// export default App;
 
 
 
