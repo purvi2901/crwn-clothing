@@ -2,10 +2,19 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Googleauth/Home";
-import Login from "./components/Googleauth/Home";
-import Signup from "./components/Googleauth/Home";
-import ProtectedRoute from "./components/Googleauth/Home";
+import Login from "./components/Googleauth/Login";
+import Signup from "./components/Googleauth/Signup";
+import ProtectedRoute from "./components/Googleauth/ProtectedRoute";
 import { UserAuthContextProvider } from "./Context/UserAuthContext";
+
+
+// import HomePage from './pages/homepage/homepage-component';
+// import './pages/homepage/homepage-style.scss';
+// import ShopPage from './pages/shoppage/shop-component';
+// import Header from './components/header/header-component';
+// import SignIn from "./components/signin/signin-component";
+// import SigninAndsignup from './pages/signinsignup/signinsignup-component';
+
 
 function App() {
   return (
@@ -14,8 +23,7 @@ function App() {
         <Col>
           <UserAuthContextProvider>
             <Routes>
-              <Route
-                path="/home"
+              <Route path="/home"
                 element={
                   <ProtectedRoute>
                     <Home />
@@ -28,7 +36,7 @@ function App() {
         </UserAuthContextProvider>
       </Col>
     </Row>
-    </Container >
+    </Container>
   );
 }
 
