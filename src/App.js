@@ -8,6 +8,13 @@ import ProtectedRoute from "./components/Googleauth/ProtectedRoute";
 import { UserAuthContextProvider } from "./Context/UserAuthContext";
 
 
+
+import Header from './components/header/header-component';
+import ShopPage from './pages/shoppage/shop-component';
+import './pages/homepage/homepage-style.scss';
+import HomePage from './pages/homepage/homepage-component';
+import store from "./Redux/store";
+
 // import HomePage from './pages/homepage/homepage-component';
 // import './pages/homepage/homepage-style.scss';
 // import ShopPage from './pages/shoppage/shop-component';
@@ -18,24 +25,31 @@ import { UserAuthContextProvider } from "./Context/UserAuthContext";
 
 function App() {
   return (
-    <Container style={{ width: "400px" }}>
+    <Container>
       <Row>
         <Col>
+        {/* <Provider store={store}> */}
           <UserAuthContextProvider>
             <Routes>
-              <Route path="/home"
+              {/* <Route
+                path="/home"
                 element={
                   <ProtectedRoute>
                     <Home />
                   </ProtectedRoute>
                 }
-              />
-              <Route path="/" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+              /> */}
+              <Route exact path="/" element={<Header />} >
+                <Route exact path="/" element={<HomePage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </Route>
             </Routes>
-        </UserAuthContextProvider>
-      </Col>
-    </Row>
+          </UserAuthContextProvider>
+          {/* </Provider> */}
+        </Col>
+      </Row>
     </Container>
   );
 }
