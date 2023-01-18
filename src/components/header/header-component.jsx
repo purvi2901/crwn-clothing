@@ -2,15 +2,22 @@ import { React, Fragment } from 'react';
 import './header-style.scss';
 import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as Logo } from '../../assets/crown.svg'
-// import { useUserAuth } from "../../Context/UserAuthContext";
 import { useUserAuth } from '../../Context/UserAuthContext';
 // const { user } = useUserAuth();
 import { useNavigate } from "react-router";
 import { Button } from "react-bootstrap";
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCartHidden } from '../../Redux/cart/cart.selectors';
+// import { selectCurrentUser } from '../../Redux/user/user.selectors';
+// 
 
 
 
-const Header = () => {
+
+const Header = ({hidden }) => {
     const { logOut, user } = useUserAuth();
     // console.log(user)
     const navigate = useNavigate();
@@ -55,12 +62,26 @@ const Header = () => {
                         </div>
                     )
                     }
-
+                    <CartIcon/>
                 </div>
+                {hidden ? null : <CartDropdown />}
             </div>
             <Outlet />
         </Fragment>
     );
 };
 
-export default Header
+
+
+// const mapStateToProps = ({ cart: { hidden } }) => ({
+//     hidden
+//   });
+
+const mapStateToProps = createStructuredSelector({
+    // currentUser: selectCurrentUser,
+    hidden: selectCartHidden
+  });
+  
+  export default connect(mapStateToProps)(Header);
+
+// export default Header
