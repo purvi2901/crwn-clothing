@@ -38,7 +38,7 @@ const Header = ({hidden }) => {
                 </Link>
                 <div className='options'>
                     <Link className='option' to='/shop'>
-                        SHOP
+                        SHOP 123
                     </Link>
                     <Link className='option' to='/'>
                         CONTACT
