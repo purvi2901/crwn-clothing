@@ -7,6 +7,8 @@ import Signup from "./components/Googleauth/Signup";
 import ProtectedRoute from "./components/Googleauth/ProtectedRoute";
 import { UserAuthContextProvider } from "./Context/UserAuthContext";
 import { Provider } from "react-redux";
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 import Header from './components/header/header-component';
@@ -24,7 +26,7 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 // import Header from './components/header/header-component';
 // import SignIn from "./components/signin/signin-component";
 // import SigninAndsignup from './pages/signinsignup/signinsignup-component';
-
+let persistor = persistStore(store)
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
       <Row>
         <Col>
         <Provider store={store}>
+        <PersistGate persistor={persistor}>
+
           <UserAuthContextProvider>
             <Routes>
               {/* <Route
@@ -42,15 +46,17 @@ function App() {
                   </ProtectedRoute>
                 }
               /> */}
-              <Route exact path="/" element={<Header />} >
-                <Route exact path="/" element={<HomePage />} />
-                <Route path="/shop" element={<ShopPage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </Route>
+                <Route exact path="/" element={<Header />} >
+                    <Route exact path="/" element={<HomePage />} />
+                    <Route path="/shop" element={<ShopPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                </Route>
             </Routes>
           </UserAuthContextProvider>
+          </PersistGate>
+
           </Provider>
         </Col>
       </Row>
